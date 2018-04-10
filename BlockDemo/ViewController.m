@@ -33,6 +33,7 @@
      打印testBlock
      2018-04-10 21:40:01.488588+0800 BlockDemo[22221:9676621] <__NSGlobalBlock__: 0x105d03088>
      */
+    
     NSLog(@"%@",testBlock);
 }
 - (void)didReceiveMemoryWarning {
