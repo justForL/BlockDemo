@@ -17,8 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self globalBlock];
-    
+//    [self globalBlock];
+//    [self mallocBlock];
+    [self stackBlock];
 }
 
 /**
@@ -35,6 +36,35 @@
      */
     
     NSLog(@"%@",testBlock);
+}
+/**
+ 堆block
+ */
+- (void)mallocBlock {
+    int a = 10;
+    void (^testBlock)(void) = ^() {
+        NSLog(@"%zd",a);
+    };
+    /*
+     打印testBlock
+     2018-04-10 22:27:17.678131+0800 BlockDemo[28791:9757839] <__NSMallocBlock__: 0x60800045e150>
+     */
+    NSLog(@"%@",testBlock);
+    
+}
+
+/**
+ 栈block
+ */
+- (void)stackBlock {
+    int a = 10;
+    /*
+     打印testBlock
+     2018-04-10 22:56:27.153377+0800 BlockDemo[29037:9793115] <__NSStackBlock__: 0x7fff586fabc8>
+     */
+    NSLog(@"%@",^{
+        NSLog(@"%zd",a);
+    });
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
